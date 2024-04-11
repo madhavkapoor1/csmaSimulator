@@ -14,11 +14,12 @@ struct Node{
     uint32_t backoff;
     uint32_t time_count;
     uint32_t backoff_count;
+    uint32_t collision_count;
 };
 
 uint32_t success = 0;
 
-int simulate(vector<Node> &nodes, int T, vector<int> R_values){
+int simulate(vector<Node> &nodes, int T, vector<int> R_values, uint32_t col_count){
     vector<int> selected_nodes;
     for(int i = 0; i < nodes.size(); i++){
         if(nodes[i].time_count == 0){
@@ -27,9 +28,18 @@ int simulate(vector<Node> &nodes, int T, vector<int> R_values){
     }          
     if(selected_nodes.size() > 1){
         for(int count = 0; count < selected_nodes.size(); count++){
-            nodes[selected_nodes[count]].backoff = R_values[nodes[selected_nodes[count]].backoff_count + 1];
-            nodes[selected_nodes[count]].backoff_count++;
-            nodes[selected_nodes[count]].time_count = (T + nodes[selected_nodes[count]].id + 1) % nodes[selected_nodes[count]].backoff;
+            if(nodes[selected_nodes[count]].collision_count > col_count - 1){
+                nodes[selected_nodes[count]].backoff_count = 0;
+                nodes[selected_nodes[count]].time_count = (T + nodes[selected_nodes[count]].id + 1) % R_values[0];
+                nodes[selected_nodes[count]].backoff = R_values[0];
+                nodes[selected_nodes[count]].collision_count = 0;
+            }
+            else{
+                nodes[selected_nodes[count]].backoff = R_values[nodes[selected_nodes[count]].backoff_count + 1];
+                nodes[selected_nodes[count]].backoff_count++;
+                nodes[selected_nodes[count]].time_count = (T + nodes[selected_nodes[count]].id + 1) % nodes[selected_nodes[count]].backoff;
+                nodes[selected_nodes[count]].collision_count++;
+            }
         }
         return -2;
     }else if(selected_nodes.size() == 1){
@@ -84,7 +94,7 @@ int main(int argc, char *argv[]){
     }
 
     for(int count = 0; count < T; count++){
-        int suc = simulate(nodes, count, R_values);
+        int suc = simulate(nodes, count, R_values, M);
         if(suc != -1 && suc != -2){
             if(count + L < T){
                 success += L;
