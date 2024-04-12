@@ -1,0 +1,7 @@
+This is a description of what each test is testing:
+
+Test 1: This is the default test given on the Notion page. We used it to ensure that our script was set up right
+Test 2: This test is testing that consecutive packets can be sent between clock ticks. For example, if a packet is sent and the calculated backoff is 0 (and there is no collision), it should send a new packet immediately.
+Test 3: This test is testing a single collision, and that the value of R is increasing to calculate the new backoff.
+Test 4: This test is testing when the maximum retransmission attempt M is reached. In this case, the packet should be dropped, and the R should be reset to its initial value.
+Test 5: This test is testing that all packets can be sent consecutively on one node, without any ticks where no packets are being sent, resulting in an output of 1.00. 

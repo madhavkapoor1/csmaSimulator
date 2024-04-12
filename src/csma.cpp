@@ -109,7 +109,7 @@ int main(int argc, char *argv[]){
         if(suc == -2 && count == T - 2) break;
     }
     FILE *output = fopen("output.txt", "w");
-    fprintf(output, "%.2lf\n", (double)success/(double)T);
+    fprintf(output, "%.2lf", (double)success/(double)T);
     fclose(output);
     return 0;
 }
