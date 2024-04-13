@@ -9,6 +9,12 @@
 
 using namespace std;
 
+/**
+ * @brief Represents a node in the CSMA simulator.
+ * 
+ * This struct stores information about a node in the CSMA (Carrier Sense Multiple Access) simulator.
+ * It includes the node's ID, backoff value, time count, backoff count, and collision count.
+ */
 struct Node{
     uint32_t id;
     uint32_t backoff;
@@ -19,6 +25,17 @@ struct Node{
 
 uint32_t success = 0;
 
+/**
+ * Simulates the CSMA/CD (Carrier Sense Multiple Access with Collision Detection) algorithm.
+ * 
+ * @param nodes A reference to a vector of Node objects representing the network nodes.
+ * @param T The current time slot.
+ * @param R_values A vector of integers representing the backoff values for each node.
+ * @param col_count The maximum number of collisions allowed before resetting the backoff values.
+ * @return Returns the ID of the selected node if only one node is available for transmission,
+ *         -2 if there are multiple nodes available but a collision occurs,
+ *         -1 if no node is available for transmission.
+ */
 int simulate(vector<Node> &nodes, int T, vector<int> R_values, uint32_t col_count){
     vector<int> selected_nodes;
     for(int i = 0; i < nodes.size(); i++){
@@ -54,6 +71,16 @@ int simulate(vector<Node> &nodes, int T, vector<int> R_values, uint32_t col_coun
     return -1;
 }
 
+/**
+ * @brief The main function of the program.
+ * 
+ * This function reads input from a file specified as a command-line argument and performs a CSMA simulation based on the input parameters.
+ * It calculates the success rate of the simulation and writes it to an output file named "output.txt".
+ * 
+ * @param argc The number of command-line arguments.
+ * @param argv An array of strings containing the command-line arguments.
+ * @return 0 if the program executed successfully, 1 if there was an error opening the input file.
+ */
 int main(int argc, char *argv[]){
     if(argc != 2){
         cout << "Usage: ./csma <input_file>" << endl;
