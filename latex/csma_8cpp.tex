@@ -1,0 +1,96 @@
+\doxysection{src/csma.cpp File Reference}
+\hypertarget{csma_8cpp}{}\label{csma_8cpp}\index{src/csma.cpp@{src/csma.cpp}}
+
+
+Program to implement CSMA protocols.  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$iomanip$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$cstdint$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_node}{Node}}
+\begin{DoxyCompactList}\small\item\em Represents a node in the CSMA simulator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{csma_8cpp_ab7311f5079e3482193157e3cd6e78de7}{simulate}} (vector$<$ \mbox{\hyperlink{struct_node}{Node}} $>$ \&nodes, int T, vector$<$ int $>$ R\+\_\+values, uint32\+\_\+t col\+\_\+count)
+\item 
+int \mbox{\hyperlink{csma_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em The main function of the program. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{csma_8cpp_af69417da33b5e397657722c33d5d00ca}\label{csma_8cpp_af69417da33b5e397657722c33d5d00ca} 
+uint32\+\_\+t {\bfseries success} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Program to implement CSMA protocols. 
+
+This contains the function(s) which implement a simulator that evaluates the performance of CSMA protocols in a wired network.
+
+\begin{DoxyAuthor}{Author}
+Justin Ishiguro (justinishiguro) 
+
+Lakshya Saroha (Lakshya013) 
+
+Madhav Kapoor (madhavkapoor1) 
+\end{DoxyAuthor}
+\begin{DoxyRefDesc}{Bug}
+\item[\mbox{\hyperlink{bug__bug000001}{Bug}}]No known bugs. \end{DoxyRefDesc}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{csma_8cpp_a0ddf1224851353fc92bfbff6f499fa97}\label{csma_8cpp_a0ddf1224851353fc92bfbff6f499fa97} 
+\index{csma.cpp@{csma.cpp}!main@{main}}
+\index{main@{main}!csma.cpp@{csma.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+The main function of the program. 
+
+This function reads input from a file specified as a command-\/line argument and performs a CSMA simulation based on the input parameters. It calculates the success rate of the simulation and writes it to an output file named "{}output.\+txt"{}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & The number of command-\/line arguments. \\
+\hline
+{\em argv} & An array of strings containing the command-\/line arguments. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if the program executed successfully, 1 if there was an error opening the input file. 
+\end{DoxyReturn}
+\Hypertarget{csma_8cpp_ab7311f5079e3482193157e3cd6e78de7}\label{csma_8cpp_ab7311f5079e3482193157e3cd6e78de7} 
+\index{csma.cpp@{csma.cpp}!simulate@{simulate}}
+\index{simulate@{simulate}!csma.cpp@{csma.cpp}}
+\doxysubsubsection{\texorpdfstring{simulate()}{simulate()}}
+{\footnotesize\ttfamily int simulate (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{struct_node}{Node}} $>$ \&}]{nodes,  }\item[{int}]{T,  }\item[{vector$<$ int $>$}]{R\+\_\+values,  }\item[{uint32\+\_\+t}]{col\+\_\+count }\end{DoxyParamCaption})}
+
+Simulates the CSMA/\+CD (Carrier Sense Multiple Access with Collision Detection) algorithm.
+
+
+\begin{DoxyParams}{Parameters}
+{\em nodes} & A reference to a vector of \doxylink{struct_node}{Node} objects representing the network nodes. \\
+\hline
+{\em T} & The current time slot. \\
+\hline
+{\em R\+\_\+values} & A vector of integers representing the backoff values for each node. \\
+\hline
+{\em col\+\_\+count} & The maximum number of collisions allowed before resetting the backoff values. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the ID of the selected node if only one node is available for transmission, -\/2 if there are multiple nodes available but a collision occurs, -\/1 if no node is available for transmission. 
+\end{DoxyReturn}
