@@ -1,3 +1,15 @@
+/** @file csma.cpp
+*   @brief Program to implement CSMA protocols
+*
+*   This contains the function(s) which implement a simulator that evaluates the performance of CSMA protocols in a wired network.
+* 
+*   @author Justin Ishiguro (justinishiguro)
+*   @author Lakshya Saroha (Lakshya013)
+*   @author Madhav Kapoor (madhavkapoor1)
+*   @bug No known bugs.
+*/
+
+/* Includes */
 #include <iostream>
 #include <fstream>
 #include <vector>
