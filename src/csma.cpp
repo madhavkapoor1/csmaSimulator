@@ -14,6 +14,12 @@ using namespace std;
  * 
  * This struct stores information about a node in the CSMA (Carrier Sense Multiple Access) simulator.
  * It includes the node's ID, backoff value, time count, backoff count, and collision count.
+ *
+ * @author Justin Ishiguro (justinishiguro)
+ * @author Lakshya Saroha (Lakshya013)
+ * @author Madhav Kapoor (madhavkapoor1)
+ *
+ * @bug No known bugs.
  */
 struct Node{
     uint32_t id;
@@ -128,9 +134,9 @@ int main(int argc, char *argv[]){
             }else {
                 success += T - count;
             }
-            // Ensuring the transmission time is considered
-            count += L; // -1 because for loop will increment count next
-            count--; // -1 because for loop will increment count next
+            /* Ensuring the transmission time is considered */
+            count += L; /* -1 because for loop will increment count next */
+            count--; /* -1 because for loop will increment count next */
             nodes[suc].time_count = (count + nodes[suc].id + 1) % nodes[suc].backoff;
         }
         if(suc == -2 && count == T - 2) break;

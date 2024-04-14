@@ -1,0 +1,18 @@
+/**
+
+@mainpage ELEC 331 Programming Assignment 2
+
+@author Justin Ishiguro (justinishiguro)
+@author Lakshya Saroha (Lakshya013)
+@author Madhav Kapoor (madhavkapoor1)
+
+@section Overview
+In this project, we implemented a simulator that evaluates the performance of CSMA protocols in a wired network.
+
+@section Known Bugs
+
+No known bugs at this moment.
+
+@section Additional Comments
+This was a really interesting project that allowed us to become more familiar with C and learn about CSMA protocols.
+*/
