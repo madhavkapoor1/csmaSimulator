@@ -1,5 +1,5 @@
 justinishiguro: Worked with Lakshya to plan the node struct and implement the simulate function. Worked on how to account for the maximum retransmission attempt in our program. Wrote tests to confirm functionality of the program and developed .sh script to allow for easier testing. 
 
-Lakshya013:
+Lakshya013: write the logic of csma and simulate function, account the drop of the packet after maximum retransmission achieved and help justin with test cases.
 
 madhavkapoor1:
